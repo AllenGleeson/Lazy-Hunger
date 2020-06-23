@@ -1,0 +1,172 @@
+/* Body */
+
+body{
+    font-family: 'Alegreya', serif;
+}
+
+.bodycontainer{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+body h4{
+    border-bottom: 2px solid black;
+    margin: 10px;
+}
+
+h1{
+    margin-top: 0px !important;
+    padding-top: 100px;
+}
+
+.card-content a{
+    color: #000000;
+}
+
+.d-inline{
+    display: inline;
+}
+
+/* Nav */
+
+.brand-logo{
+    margin-left: 320px;
+    font-size: 50px;
+}
+
+.nav-extended{
+    height: 70px;
+    background-color: #a62d12;
+}
+
+#nav-mobile{
+    margin-top: 5px;
+}
+
+#nav-mobile a{
+    font-size: 20px;
+}
+
+#nav-mobile li a:hover{
+    font-size: 28px;
+    text-decoration: underline;
+}
+
+/* Home Page */
+
+.masthead{
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg');
+    background-size: cover;
+    height: 340px;
+}
+
+.jumbotron-about{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -2px black;
+    color: #fafafa;
+}
+
+.subheading{
+    font-size: 20px;
+}
+
+#search_Label{
+    font-family: 'Alegreya', serif;
+}
+
+#search_button{
+    font-size: 16px;
+    font-family: 'Alegreya', serif;
+}
+
+.card{
+    background-color: blanchedalmond;
+}
+
+.card-image img{
+    width: 300px;
+    height: 100%;
+}
+
+.card a{
+    margin-top: 110px;
+    margin-right: 30px;
+}
+
+.card_buttons{
+    background-color: #a62d12;
+}
+
+.recipe_container{
+    margin-bottom: 0;
+}
+
+.material-icons{
+    background-color: #a62d12;
+}
+
+
+/* View Recipe */
+
+.recipe_container_row{
+    background-color: blanchedalmond;
+    border-radius: 15px;
+}
+
+.recipeImage{
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+#recipe_content{
+    background-color: blanchedalmond;
+    border-radius: 10px;
+}
+
+#recipe_title{
+    margin-top: 0px !important;
+}
+
+.recipe_description{
+    height: 150px;
+}
+
+.recipe_description p{
+    font-size: 16px;
+}
+
+/* Details Section */
+
+.ingredients{
+    padding: 20px;
+}
+
+.ingredients ul{
+    padding: 10px;
+}
+
+.ingredients ul li{
+    padding: 5px;
+    font-size: 16px;
+}
+
+.ingredients ul li:hover{
+    font-style: italic;
+}
+
+.cooking_methods{
+    padding: 20px;
+}
+
+.cooking_methods ol{
+    padding: 10px;
+}
+
+.cooking_methods ol li{
+    padding: 5px;
+    font-size: 16px;
+}
+
+.cooking_methods ol li:hover{
+    font-style: italic;
+}

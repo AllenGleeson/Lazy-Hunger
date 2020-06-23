@@ -1,0 +1,107 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="row">
+    <div class="col s4">
+        <img src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg"
+            alt="placeholderImage">
+        <input type="file" class="custom-file-input" name="image" id="image">
+        <button type="submit" class="btn btn-primary">Choose an Image</button>
+    </div>
+
+    <div class="col s8">
+        <div class="row">
+            <h1>
+                <div class="input-field">
+                    <input id="recipe_name" name="recipe_name" type="text" class="validate">
+                    <label for="recipe_name">Recipe Name</label>
+                </div>
+            </h1>
+            <div>
+                <div class="input-field">
+                    <textarea id="description" name="description"
+                        class="materialize-textarea recipe_description"></textarea>
+                    <label for="description">Description</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <i class="small material-icons">access_time</i>
+
+
+                <div class="input-field col s12">
+                    <input id="prep_time" name="prep_time" type="text" class="validate">
+                    <label for="prep_time">Preparation Time</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="cooking_time" name="cooking_time" type="text" class="validate">
+                    <label for="cooking_time">Cooking Time</label>
+                </div>
+            </div>
+            <div class="col s6">
+                <i class="small material-icons">free_breakfast</i>
+                <div class="input-field col s12">
+                    <label for="difficulty">Difficulty</label>
+                    <a class='dropdown-trigger btn' href='#' data-target='difficulty'>Choose a difficulty</a>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='difficulty' class='dropdown-content' name="difficulty">
+                        <li><a href="#!">Difficulty: Easy</a></li>
+                        <li><a href="#!">Difficulty: Average</a></li>
+                        <li><a href="#!">Difficulty: Hard</a></li>
+                    </ul>
+
+                </div>
+                <i class="small material-icons">local_dining</i>
+
+                <div class="input-field col s12">
+
+                    <label for="serves">Serves</label>
+                    <a class='dropdown-trigger btn' href='#' data-target='serves'>How many will this serve?</a>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='serves' class='dropdown-content'>
+                        <li><a href="#!">Serves: One</a></li>
+                        <li><a href="#!">Serves: Two</a></li>
+                        <li><a href="#!">Serves: Three</a></li>
+                        <li><a href="#!">Serves: Four</a></li>
+                        <li><a href="#!">Serves: Five</a></li>
+                        <li><a href="#!">Serves: Six+</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s4 ingredients">
+        <h4>List of Ingrediants</h4>
+        <ul class="d-none ingredients-list"></ul>
+        <input id="ingredient" name="ingredient" type="text" class="validate">
+        <button>
+            <div><i class="small material-icons">add</i></div>
+        </button>
+    </div>
+
+    <div class="col s6 cooking_methods">
+        <h4>Cooking Methods</h4>
+        <ul class="d-none cooking-methods-list"></ul>
+        <input id="method" name="method" type="text" class="validate">
+        <button id="add_cooking_method">
+            <div><i class="small material-icons">add</i></div>
+        </button>
+    </div>
+
+</div>
+
+<button>
+    <div><i class="small material-icons">Update</i></div>
+</button>
+<button>
+    <div><i class="small material-icons">Cancel</i></div>
+</button>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block jumbotron %}
+<header class="masthead">
+    <div class="jumbotron center-align">
+        <div class="container jumbotron-about">
+            <h1>Spark up your appetite</h1>
+            <span class="subheading">When we feel hungry but we don't know what we could make, we need some
+                inspiration.
+                Look through some community contributed recipes to find something for you. Avoid that takeaway
+                option!</span>
+        </div>
+    </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<div class="row container">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <form class="form-inline mr-auto">
+            <input id="search_Label" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button id="search_button" class="btn btn-unique blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="col s12 m7">
+
+    {% for recipe in recipes %}
+    <div class="recipe_container">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="{{recipe.image}}">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">
+                        <h2 class="header">{{recipe.recipe_name}}</h2>
+                    </a>
+                    <p>{{recipe.description}}</p>
+                    <div class="d-inline"><i class="small material-icons">access_time</i>{{recipe.prep_time + recipe.cooking_time}}</div>
+                    <div class="d-inline"><i class="small material-icons">free_breakfast</i>Difficulty: {{recipe.difficulty}}</div>
+                </div>
+            </div>
+            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+                class="medium waves-effect waves-circle waves-red btn-floating secondary-content valign-wrapper">
+                <i class="large material-icons card_buttons">update</i>Edit
+            </a>
+            <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+                class="medium waves-effect waves-circle waves-red btn-floating secondary-content valign-wrapper">
+                <i class="large material-icons card_buttons">delete_forever</i>Delete
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}
