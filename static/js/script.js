@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
   $('.sidenav').sidenav();
+  $('select').formSelect();
 });
 
 $('.dropdown-trigger').dropdown();
@@ -21,7 +22,7 @@ $(".deleteListItem").click(function () {
 
 function add_ingredient() {
 
-  let ingredientText = document.getElementById("ingredient");
+  let newIngredient = document.getElementById("ingredient");
   let ingredientsList = document.getElementsByClassName("ingredients-list");
 
   let ingredientlistItem = document.createElement('li');
@@ -32,14 +33,14 @@ function add_ingredient() {
   let iconDiv = document.createElement('div');
   let deleteIcon = document.createElement('i');
 
-  cookingMethod.innerText(methodText.value());
+  ingredient.innerText = newIngredient.value;
 
   ingredientHiddenInput.setAttribute("type", "hidden");
   ingredientHiddenInput.setAttribute("name", "methods");
-  ingredientHiddenInput.setAttribute("value", ingredientText.value());
+  ingredientHiddenInput.setAttribute("value", newIngredient.value);
 
   deleteIcon.setAttribute("class", "small material-icons");
-  deleteIcon.innerText("delete");
+  deleteIcon.innerText = "delete";
 
 
 
@@ -51,13 +52,13 @@ function add_ingredient() {
   ingredientlistItem.appendChild(iconDiv);
 
   ingredientsList[0].appendChild(ingredientlistItem);
-  
+  $('#ingredient').val('');
 }
 
 // Create the city description above the cards
 function add_cooking_method() {
 
-  let methodText = document.getElementById("method");
+  let newMethod = document.getElementById("method");
   let cookingMethodsList = document.getElementsByClassName("cooking-methods-list");
 
   let methodlistItem = document.createElement('li');
@@ -68,14 +69,14 @@ function add_cooking_method() {
   let iconDiv = document.createElement('div');
   let deleteIcon = document.createElement('i');
 
-  cookingMethod.innerText(methodText.value());
+  cookingMethod.innerText = newMethod.value;
 
   methodHiddenInput.setAttribute("type", "hidden");
   methodHiddenInput.setAttribute("name", "methods");
-  methodHiddenInput.setAttribute("value", methodText.value());
+  methodHiddenInput.setAttribute("value", newMethod.value);
 
   deleteIcon.setAttribute("class", "small material-icons");
-  deleteIcon.innerText("delete");
+  deleteIcon.innerText = "delete";
 
 
 
@@ -87,5 +88,5 @@ function add_cooking_method() {
   methodlistItem.appendChild(iconDiv);
 
   cookingMethodsList[0].appendChild(methodlistItem);
-  
+  $('#method').val('');
 }

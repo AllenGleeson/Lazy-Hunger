@@ -12,40 +12,43 @@ mongo = PyMongo(app)
 
 #render_template("index.html", recipes=mongo.db.recipes.find())
 @app.route('/')
-@app.route('/get_recipes')
+@app.route('/get_recipes/')
 def get_recipes():
-    print(mongo.db.recipes.find())
-    return render_template("index.html", recipes=mongo.db.recipes.find())
+    print(search_string)
+    if search_string:
+        recipes = mongo.db.recipes.find( { recipe_name: search_string } )
+    else:
+        print(mongo.db.recipes.find())
+        recipes=mongo.db.recipes.find()
+
+    return render_template("index.html", recipes)
 
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('create_recipe.html')
 
 
-""" @app.route('/insert_recipe', methods=['POST'])
+@app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes =  mongo.db.recipes
-    recipe_image = mongo.db.recipe_images
 
-    new_recipe_image = recipe_image.insert_one({
-        'name':request.form.get('recipe_name'),
-        'image':request.form.get('recipe_image')
-        })
-    
+    print(request.form)
+    print(request.form.getlist('methods'))
+    print(request.files)
     recipes.insert_one(
         {
         'recipe_name':request.form.get('recipe_name'),
-        'recipe_description':request.form.get('recipe_description'),
+        'recipe_description':request.form.get('description'),
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'difficulty':request.form.get('difficulty'),
         'serves':request.form.get('serves'),
-        'recipe_image':request.form.get(new_recipe_image.ObjectId),
-        'ingrediants':request.form.get('ingrediants')
-        'methods':request.form.get('methods')
+        'recipe_image': "data:image/png;base64," + base64.b64encode(request.files['image'].read()).decode("UTF-8"),
+        'ingredients':request.form.getlist('ingredients'),
+        'methods':request.form.getlist('methods')
     }
     )
-    return redirect(url_for('get_recipes')) """
+    return redirect(url_for('get_recipes'))
 
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
@@ -59,23 +62,6 @@ def edit_recipe(recipe_id):
     recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     print(recipe)
     return render_template('edit_recipe.html', recipe=recipe)
-
-@app.route("/upload-image", methods=["GET", "POST"])
-def upload_image():
-
-    if request.method == "POST":
-
-        if request.files:
-
-            image = request.files["image"]
-            
-            print(base64.b64encode(image.read()))
-
-            return redirect(request.url)
-
-
-    return render_template("test.html")
-
 
 """ @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
@@ -97,17 +83,11 @@ def update_recipe(recipe_id):
         base64.b64encode(image_file.read())
     })
 
-    recipe_image.update( {'_id': ObjectId(recipes.find({'_id': ObjectId(recipe_id)}).image)},
-    {
-        'name':request.form.get('recipe_name'),
-        'image':request.form.get('recipe_image')
-    })
     return redirect(url_for('get_recipes')) """
 
 
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    mongo.db.recipe_images.remove({'_id': ObjectId(recipes.find({'_id': ObjectId(recipe_id)}).image)})
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
