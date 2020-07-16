@@ -69,6 +69,10 @@ h1{
     font-size: 20px;
 }
 
+#search_button{
+    background-color: #a62d12;
+}
+
 #search_Label{
     font-family: 'Alegreya', serif;
 }
@@ -87,9 +91,12 @@ h1{
     height: 100%;
 }
 
+.m-2{
+    margin: 2rem;
+}
+
 .card a{
-    margin-top: 110px;
-    margin-right: 30px;
+    top: 50%;
 }
 
 .card_buttons{
@@ -169,4 +176,24 @@ h1{
 
 .cooking_methods ol li:hover{
     font-style: italic;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 992px){
+    nav .brand-logo {
+        left: 0% !important;
+    }
+    
+    .card.horizontal .card-image {
+        max-width: 30% !important;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .subheading {
+        font-size: 16px;
+    }
 }

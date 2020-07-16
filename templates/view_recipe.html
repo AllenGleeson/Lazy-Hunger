@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<section id="recipe_content" class="row">
-    <div class="col s4">
-        <img src="{{recipe.image}}" alt="{{recipe.recipe_name}}" id="recipeImage" class="recipeImage">
+<section class="row recipe_content">
+    <div class="col s12 m4 l4">
+        <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}" id="recipeImage" class="recipeImage">
     </div>
 
-    <div class="col s8">
+    <div class="col s12 m8 l8">
         <h1 id="recipe_title">{{recipe.recipe_name}}</h1>
         <div class="recipe_description">
             <p>{{recipe.description}}</p>
@@ -34,7 +34,7 @@
 </section>
 
 <div class="row">
-    <div class="col s4 ingredients">
+    <div class="col s12 m4 l4 ingredients">
         <h4>List of Ingrediantshhhhhh</h4>
         <ul>
             {% for ingredient in recipe.ingredients %}
@@ -45,7 +45,7 @@
         </ul>
     </div>
 
-    <div class="col s6 cooking_methods">
+    <div class="col s12 m8 l4 cooking_methods">
         <h4>Cooking Methods</h4>
         <ol>
             {% for method in recipe.methods %}

@@ -1,141 +1,137 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<div class="row">
-    <div class="col s4">
-        <img src="{{recipe.image}}" alt="{{recipe.recipe_name}}" class="recipeImage">
-        <input type="file" class="custom-file-input" name="image" id="image">
-        <button type="submit" class="btn btn-primary">Choose an Image</button>
-    </div>
-
-    <div class="col s8">
-        <div class="row">
-            <h1>
-                <div class="input-field">
-                    <input id="recipe_name" name="recipe_name" type="text" class="validate"
-                        placeholder="{{recipe.recipe_name}}">
-                    <label for="recipe_name">Recipe Name</label>
-                </div>
-            </h1>
-            <div>
-                <div class="input-field">
-                    <textarea id="description" name="description"
-                        class="materialize-textarea recipe_description">{{recipe.description}}</textarea>
-                    <label for="description">Description</label>
-                </div>
-            </div>
+<form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" enctype="multipart/form-data">
+    <div class="row recipe_content">
+        <div class="form-group col s12 m4 l4">
+            <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}" id="recipe_image" class="recipeImage">
+            <input type="file" class="custom-file-input" name="image" id="image">
         </div>
-        <div class="row">
-            <div class="col s6">
-                <i class="small material-icons">access_time</i>
 
-
-                <div class="input-field col s12">
-                    <input id="prep_time" name="prep_time" type="text" class="validate"
-                        placeholder="{{recipe.prep_time}}">
-                    <label for="prep_time">Preparation Time</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="cooking_time" name="cooking_time" type="text" class="validate"
-                        placeholder="{{recipe.cooking_time}}">
-                    <label for="cooking_time">Cooking Time</label>
+        <div class="col s12 m8 l8">
+            <div class="row">
+                <h1>
+                    <div class="input-field">
+                        <input id="recipe_name" name="recipe_name" type="text" class="validate"
+                            value="{{recipe.recipe_name}}">
+                        <label for="recipe_name" class="active">Recipe Name</label>
+                    </div>
+                </h1>
+                <div>
+                    <div class="input-field">
+                        <textarea id="description" name="description"
+                            class="materialize-textarea recipe_description">{{recipe.description}}</textarea>
+                        <label for="description" class="active">Description</label>
+                    </div>
                 </div>
             </div>
-            <div class="col s6">
-                <i class="small material-icons">free_breakfast</i>
+            <div class="row">
+                <div class=" col s12 m6 l6">
+                    <i class="small material-icons">access_time</i>
 
-                <div>
-                    <div class="input-field d-inline">
-                        <label for="difficulty">Difficulty</label>
-                        <a class='dropdown-trigger btn' href='#' data-target='difficulty'>Difficulty:
-                            {{recipe.difficulty}}</a>
 
-                        <!-- Dropdown Structure -->
-                        <ul id='difficulty' class='dropdown-content' name="difficulty">
-                            <li><a href="#!">Easy</a></li>
-                            <li><a href="#!">Average</a></li>
-                            <li><a href="#!">Hard</a></li>
-                        </ul>
+                    <div class="input-field col s12">
+                        <input id="prep_time" name="prep_time" type="text" class="validate"
+                            value="{{recipe.prep_time}}">
+                        <label for="prep_time" class="active">Preparation Time</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="cooking_time" name="cooking_time" type="text" class="validate"
+                            value="{{recipe.cooking_time}}">
+                        <label for="cooking_time" class="active">Cooking Time</label>
+                    </div>
+                </div>
+                <div class=" col s12 m6 l6">
+                    <i class="small material-icons">free_breakfast</i>
+                    <div class="input-field col s12">
+                        <label for="difficulty" class="active">Difficulty</label>
+
+                        <div class="input-field col s12">
+                            <select name="difficulty">
+                                <option value="{{recipe.difficulty}}" selected>{{recipe.difficulty}}</option>
+                                <option value="Easy">Difficulty: Easy</option>
+                                <option value="Average">Difficulty: Average</option>
+                                <option value="Hard">Difficulty: Hard</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
+
+                    </div>
+                    <i class="small material-icons">local_dining</i>
+
+                    <div class="input-field col s12">
+
+                        <label for="serves" class="active">Serves</label>
+
+                        <div class="input-field col s12">
+                            <select name="serves">
+                                <option value="{{recipe.serves}}" selected>Serves: {{recipe.serves}}</option>
+                                <option value="1">Serves: One</option>
+                                <option value="2">Serves: Two</option>
+                                <option value="3">Serves: Three</option>
+                                <option value="4">Serves: Four</option>
+                                <option value="5">Serves: Five</option>
+                                <option value="6">Serves: Six+</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
 
                     </div>
                 </div>
-
-                <i class="small material-icons">local_dining</i>
-                <div>
-                    <div class="input-field d-inline">
-
-                        <label for="serves">Serves</label>
-                        <a class='dropdown-trigger btn' href='#' data-target='serves'>Serves: {{recipe.serves}}</a>
-
-                        <!-- Dropdown Structure -->
-                        <ul id='serves' class='dropdown-content'>
-                            <li><a href="#!">One</a></li>
-                            <li><a href="#!">Two</a></li>
-                            <li><a href="#!">Three</a></li>
-                            <li><a href="#!">Four</a></li>
-                            <li><a href="#!">Five</a></li>
-                            <li><a href="#!">Six+</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col s4 ingredients">
-        <h4>List of Ingrediants</h4>
-        <ul class="ingredients-list">
-            {% for ingredient in recipe.ingredients %}
-            <li class="d-inline">
-                <p>{{ingredient}}</p>
-                <input type="hidden" name="ingredients" value="{{ingredient}}">
-                <button class="deleteListItem">
-                    <div><i class="small material-icons">delete</i></div>
-                </button>
-            </li>
-            
-            {% endfor %}
-        </ul>
+    <div class="row">
+        <div class=" col s12 m4 l4 ingredients">
+            <h4>List of Ingrediants</h4>
+            <ul class="d-none ingredients-list">
+                {% for ingredient in recipe.ingredients %}
+                <li class="d-inline">
+                    <p>{{ingredient}}</p>
+                    <input type="hidden" name="ingredients" value="{{ingredient}}">
+                    <button type="button">
+                        <div><i class="small material-icons">delete</i></div>
+                    </button>
+                </li>
 
+                {% endfor %}
+            </ul>
 
-        <input id="ingredient" name="ingredientInput" type="text" class="validate">
-        <button>
-            <div><i class="small material-icons">add</i></div>
-        </button>
+            <input id="ingredient" type="text" class="validate">
+            <button id="add_ingredient" type="button">
+                <div><i class="small material-icons">add</i></div>
+            </button>
+        </div>
+
+        <div class=" col s12 m6 l6 cooking_methods">
+            <h4>Cooking Methods</h4>
+            <ul class="d-none cooking-methods-list">
+                {% for method in recipe.methods %}
+                <li class="d-inline">
+                    <p>{{method}}</p>
+                    <input type="hidden" name="methods" value="{{method}}">
+                    <button type="button">
+                        <div><i class="small material-icons">delete</i></div>
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <input id="method" type="text" class="validate">
+            <button id="add_cooking_method" type="button">
+                <div><i class="small material-icons">add</i></div>
+            </button>
+        </div>
+
     </div>
 
-    <div class="col s6 cooking_methods">
-        <h4>Cooking Methods</h4>
-        <ol class="cooking-methods-list">
-            {% for method in recipe.methods %}
-            <li class="d-inline">
-                <p>{{method}}</p>
-                <input type="hidden" name="methods" value="{{method}}">
-                <button class="deleteListItem">
-                    <div><i class="small material-icons">delete</i></div>
-                </button>
-            </li>
-            {% endfor %}
-        </ol>
-
-
-        <input id="method" name="methodInput" type="text" class="validate">
-        <button id="add_cooking_method">
-            <div><i class="small material-icons">add</i></div>
-        </button>
-    </div>
-
-</div>
-
-<button>
-    <div><i class="small material-icons">Update</i></div>
-</button>
-<button>
-    <div><i class="small material-icons">Cancel</i></div>
-</button>
+    <button>
+        <div><i class="small material-icons"></i>Update</div>
+    </button>
+    <button>
+        <div><i class="small material-icons"></i>Cancel</div>
+    </button>
+</form>
 
 {% endblock %}
