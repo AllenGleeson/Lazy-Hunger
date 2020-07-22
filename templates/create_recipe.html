@@ -1,91 +1,97 @@
 {% extends 'base.html' %} {% block content %}
 
+<!-- Create Recipe Page -->
 
-<form  action="/insert_recipe" method="POST" enctype="multipart/form-data">
+<form name="recipe_form" action="/insert_recipe" method="POST" enctype="multipart/form-data">
+
+    <!-- First row for the image and recipe details, not including the ingredients and cooking methods -->
+    <!-- All inputs are set as required except cooking methods and ingredients because they are validated in the JS -->
     <div class="row recipe_content">
-        <div class="form-group col s12 m4 l4">
-            <img src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg"
-                alt="placeholderImage" id="recipe_image" class="recipeImage">
-            <input type="file" class="custom-file-input" name="image" id="image">
-        </div>
 
-        <div class="col s12 m8 l8">
-            <div class="row">
-                <h1>
-                    <div class="input-field">
-                        <input id="recipe_name" name="recipe_name" type="text" class="validate">
-                        <label for="recipe_name" class="active">Recipe Name</label>
-                    </div>
-                </h1>
-                <div>
-                    <div class="input-field">
-                        <textarea id="description" name="description"
-                            class="materialize-textarea recipe_description"></textarea>
-                        <label for="description" class="active">Description</label>
-                    </div>
+        <!--  Column for the image -->
+        <!-- Input for the recipe image. Shows a placeholder image above and gives the user a preview of the image when uploaded -->
+        <div class="form-group col s12 m4 l4">
+            <img src="/static/images/placeholder.jpg" alt="placeholderImage" id="recipe_image" class="recipeImage">
+            <div class="file-field input-field">
+                <div class="btn btn-unique btn-color btn-rounded btn-sm">
+                    <span>File</span>
+                    <input type="file" name="image" id="image" accept="jpg, png, jpeg">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
                 </div>
             </div>
-            <div class="row">
-                <div class="col s12 m6 l6">
-                    <i class="small material-icons">access_time</i>
+        </div>
+        
+        <!-- Column for recipe details -->
+        <div class="col s12 m8 l8">
+            <!-- Inputs for the recipe name and description -->
+            <div class="input-field">
+                <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
+                <label for="recipe_name" class="active">Recipe Name</label>
+            </div>
+            <div class="input-field">
+                <textarea id="description" name="description" class="materialize-textarea recipe_description"
+                    required></textarea>
+                <label for="description" class="active">Description</label>
+            </div>
+
+            <!-- Column for the preperation and cooking time, set with a type of number -->
+            <div class="col s12 m6 l6">
+                <i class="small material-icons">access_time</i>
 
 
-                    <div class="input-field col s12">
-                        <input id="prep_time" name="prep_time" type="text" class="validate">
-                        <label for="prep_time" class="active">Preparation Time</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="cooking_time" name="cooking_time" type="text" class="validate">
-                        <label for="cooking_time" class="active">Cooking Time</label>
-                    </div>
+                <div class="input-field">
+                    <input id="prep_time" name="prep_time" class="validate" type="number" min="1" max="60" required>
+                    <label for="prep_time" class="active">Preparation Time</label>
                 </div>
-                <div class="col s12 m6 l6">
-                    <i class="small material-icons">free_breakfast</i>
-                    <div class="input-field col s12">
-                        <label for="difficulty" class="active">Difficulty</label>
+                <div class="input-field">
+                    <input id="cooking_time" name="cooking_time" class="validate" type="number" min="1" max="60"
+                        required>
+                    <label for="cooking_time" class="active">Cooking Time</label>
+                </div>
+            </div>
 
-                        <div class="input-field col s12">
-                            <select name="difficulty">
-                              <option value="" disabled selected>Choose your option</option>
-                              <option value="Easy">Difficulty: Easy</option>
-                              <option value="Average">Difficulty: Average</option>
-                              <option value="Hard">Difficulty: Hard</option>
-                            </select>
-                            <label>Materialize Select</label>
-                        </div>
+            <!-- Column for the difficulty and how many the recipe will serve. Both displayed in select elements -->
+            <div class="col s12 m6 l6">
+                <i class="small material-icons">free_breakfast</i>
 
-                    </div>
-                    <i class="small material-icons">local_dining</i>
+                <div class="input-field">
+                    <select name="difficulty" required>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Easy">Difficulty: Easy</option>
+                        <option value="Average">Difficulty: Average</option>
+                        <option value="Hard">Difficulty: Hard</option>
+                    </select>
+                </div>
 
-                    <div class="input-field col s12">
+                <i class="small material-icons">local_dining</i>
 
-                        <label for="serves" class="active">Serves</label>
-                        
-                        <div class="input-field col s12">
-                            <select name="serves">
-                              <option value="" disabled selected>Choose your option</option>
-                              <option value="1">Serves: One</option>
-                              <option value="2">Serves: Two</option>
-                              <option value="3">Serves: Three</option>
-                              <option value="4">Serves: Four</option>
-                              <option value="5">Serves: Five</option>
-                              <option value="6">Serves: Six+</option>
-                            </select>
-                            <label>Materialize Select</label>
-                          </div>
 
-                    </div>
+                <div class="input-field">
+                    <select name="serves" required>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Serves: 1</option>
+                        <option value="2">Serves: 2</option>
+                        <option value="3">Serves: 3</option>
+                        <option value="4">Serves: 4</option>
+                        <option value="5">Serves: 5</option>
+                        <option value="6">Serves: 6+</option>
+                    </select>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Second row for ingredients and cooking methods both displayed in an unordered list.
+    When the user clicks on the add button with a value in the input a new list item will be created -->
     <div class="row">
         <div class="col s12 m4 l4 ingredients">
             <h4>List of Ingrediants</h4>
             <ul class="d-none ingredients-list"></ul>
+            <span class=""></span>
             <input id="ingredient" type="text" class="validate">
-            <button id="add_ingredient" type="button">
+            <button id="add_ingredient" class="btn btn-unique btn-color btn-rounded btn-sm my-0" type="button">
                 <div><i class="small material-icons">add</i></div>
             </button>
         </div>
@@ -93,20 +99,24 @@
         <div class="col s12 m6 l6 cooking_methods">
             <h4>Cooking Methods</h4>
             <ul class="d-none cooking-methods-list"></ul>
+            <span class=""></span>
             <input id="method" type="text" class="validate">
-            <button id="add_cooking_method" type="button">
+            <button id="add_cooking_method" class="btn btn-unique btn-color btn-rounded btn-sm my-0" type="button">
                 <div><i class="small material-icons">add</i></div>
             </button>
         </div>
 
     </div>
 
-    <button>
-        <div><i class="small material-icons"></i>Create</div>
+    <!-- Creates the new Recipe -->
+    <button class="btn btn-unique btn-color btn-rounded btn-sm my-0">
+        <div><i class="small material-icons">add_box</i>Create</div>
     </button>
-    <button>
-        <div><i class="small material-icons"></i>Cancel</div>
-    </button>
+
+    <!-- Links back to the home page -->
+    <a href="{{url_for('get_recipes')}}" class="btn btn-unique btn-color btn-rounded btn-sm my-0">
+        <i class="small material-icons">cancel</i>Cancel
+    </a>
 </form>
 
 {% endblock %}

@@ -27,24 +27,29 @@ h1{
     display: inline;
 }
 
+.timeFont{
+    font-size: 6px;
+}
+
 /* Nav */
 
 .brand-logo{
     margin-left: 320px;
-    font-size: 50px;
+    margin-top: 8px;
+    font-size: 3.1rem !important;
 }
 
 .nav-extended{
-    height: 70px;
+    height: 80px !important;
     background-color: #a62d12;
 }
 
 #nav-mobile{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
-#nav-mobile a{
-    font-size: 20px;
+#nav-mobile a {
+    font-size: 25px;
 }
 
 #nav-mobile li a:hover{
@@ -69,7 +74,7 @@ h1{
     font-size: 20px;
 }
 
-#search_button{
+.btn-color{
     background-color: #a62d12;
 }
 
@@ -86,8 +91,13 @@ h1{
     background-color: blanchedalmond;
 }
 
+.card-image{
+    width: 250px;
+    max-width: 250px;
+}
+
 .card-image img{
-    width: 300px;
+    width: 100%;
     height: 100%;
 }
 
@@ -107,8 +117,18 @@ h1{
     margin-bottom: 0;
 }
 
-.material-icons{
-    background-color: #a62d12;
+
+.mainpageIcons i{
+    float: left;
+    margin-right: 5px;
+}
+
+.mainpageIcons p{
+    font-size: 20px;
+}
+
+.mainpageIcons p span{
+    font-size: 12px;
 }
 
 
@@ -165,17 +185,23 @@ h1{
     padding: 20px;
 }
 
-.cooking_methods ol{
+.cooking_methods ul{
     padding: 10px;
 }
 
-.cooking_methods ol li{
+.cooking_methods ul li{
     padding: 5px;
     font-size: 16px;
 }
 
-.cooking_methods ol li:hover{
+.cooking_methods ul li:hover{
     font-style: italic;
+}
+
+/* Error html */
+
+.flashes{
+    font-size: 16px;
 }
 
 /* Media Queries */
