@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" enctype="multipart/form-data">
+<form class="recipe-form" action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" enctype="multipart/form-data">
     <div class="row recipe_content">
         <div class="form-group col s12 m4 l4">
             <img id="recipe_image" class="recipeImage" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
@@ -82,7 +82,7 @@
     </div>
 
     <div class="row">
-        <div class=" col s12 m4 l4 ingredients">
+        <div class=" col s12 m6 l6 ingredients">
             <h4>List of Ingrediants</h4>
             <ul class="ingredients-list">
                 {% for ingredient in recipe.ingredients %}

@@ -9,8 +9,7 @@ from utils import catch_me, get_random_string, allowed_file
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'lazy-hunger'
-app.config[
-    "MONGO_URI"] = os.getenv('DBConnectionString')
+app.config["MONGO_URI"] = os.getenv('DBConnectionString')
 mongo = PyMongo(app)
 
 
@@ -21,8 +20,11 @@ def get_recipes():
     sort_key = request.args.get('sort')
     search = request.args.get('search')
 
-    recipes = mongo.db.recipes.find() if not search else mongo.db.recipes.find(
-        {"recipe_name": {"$regex": "/^.*" + search + ".*$/i"}})
+    if not sort_key:
+        sort_key = "recipe_name"
+
+    recipes = mongo.db.recipes.find().collation({ "locale": "en" }) if not search else mongo.db.recipes.find(
+        {"recipe_name": {"$regex": "(?i).*" + search + ".*"}}).collation({ "locale": "en" })
 
     if sort_key == "difficulty" or sort_key == "recipe_name" or sort_key == "serves" or sort_key == "total_time":
         recipes = recipes.sort(sort_key, pymongo.ASCENDING)

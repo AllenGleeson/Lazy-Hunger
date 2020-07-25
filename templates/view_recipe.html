@@ -36,8 +36,8 @@
 
 <!-- Section for ingredients and cooking methods. A list item is created for each one found. -->
 <div class="row">
-    <div class="col s12 m4 l4 ingredients">
-        <h4>List of Ingrediantshhhhhh</h4>
+    <div class="col s12 m6 l6 ingredients">
+        <h4>List of Ingrediants</h4>
         <ul>
             {% for ingredient in recipe.ingredients %}
 
@@ -47,7 +47,7 @@
         </ul>
     </div>
 
-    <div class="col s12 m8 l4 cooking_methods">
+    <div class="col s12 m6 l6 cooking_methods">
         <h4>Cooking Methods</h4>
         <ul>
             {% for method in recipe.methods %}
@@ -60,7 +60,7 @@
 </div>
 
 <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="btn btn-unique btn-color btn-rounded btn-sm my-0">
-    <i class="large material-icons">edit</i>Edit Recipe
+    <i class="large material-icons">edit</i>Edit
 </a>
 <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="btn btn-unique btn-color btn-rounded btn-sm my-0">
     <i class="large material-icons">delete_forever</i>Delete

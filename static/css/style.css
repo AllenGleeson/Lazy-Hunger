@@ -35,6 +35,7 @@ h1{
 
 .brand-logo{
     margin-left: 320px;
+    left: 0% !important;
     margin-top: 8px;
     font-size: 3.1rem !important;
 }
@@ -113,11 +114,6 @@ h1{
     background-color: #a62d12;
 }
 
-.recipe_container{
-    margin-bottom: 0;
-}
-
-
 .mainpageIcons i{
     float: left;
     margin-right: 5px;
@@ -131,18 +127,43 @@ h1{
     font-size: 12px;
 }
 
+.recipe_buttons{
+    width: 100px;
+    margin-right: 5px;
+    height: 65px;
+}
+
+.recipe_buttons a{
+    margin-right: 5px;
+    height: 65px;
+    letter-spacing: 1.5px !important;
+}
+
+.recipe_buttons i{
+    font-size: 2.3rem !important;
+}
+
+#delete_recipe{
+    margin-top: 35px;
+}
+
+#edit_recipe{
+    margin-top: 14px;
+    margin-bottom: 50px;
+}
+
 
 /* View Recipe */
 
-.recipe_container_row{
+.recipe_content{
     background-color: blanchedalmond;
     border-radius: 15px;
 }
 
 .recipeImage{
     width: 100%;
-    padding: 15px;
     border-radius: 20px;
+    margin-top: 10px;
 }
 
 #recipe_content{
@@ -151,7 +172,7 @@ h1{
 }
 
 #recipe_title{
-    margin-top: 0px !important;
+    margin-top: 15px !important;
 }
 
 .recipe_description{
@@ -206,20 +227,47 @@ h1{
 
 /* Media Queries */
 
-@media only screen and (max-width: 992px){
+@media only screen and (max-width: 600px){
     nav .brand-logo {
         left: 0% !important;
+        font-size: 2.2rem !important;
     }
     
+    .mainpageIcons{
+        display: inline-flex;
+    }
+
+    .mainpageIcons p{
+        font-size: 17px;
+    }
+
     .card.horizontal .card-image {
         max-width: 30% !important;
+    }
+
+    #header{
+        margin: 0px 0px 8px 4px !important;
+    }
+    
+    .card-content{
+        padding: 4px;
     }
 
     h1 {
         font-size: 2.8rem;
     }
 
+    h2 {
+        font-size: 2.15rem;
+    }
+    
     .subheading {
         font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1600px){
+    h1 {
+        font-size: 3.2rem;
     }
 }
