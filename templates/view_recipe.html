@@ -4,7 +4,7 @@
 <section class="row recipe_content">
     <div class="col s12 m4 l4">
         <img id="recipeImage" class="recipeImage" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
-        onerror="this.src='/static/images/placeholder.jpg'">
+            onerror="this.src='/static/images/placeholder.jpg'">
     </div>
 
     <div class="col s12 m8 l8">
@@ -12,24 +12,34 @@
         <div class="recipe_description">
             <p>{{recipe.recipe_description}}</p>
         </div>
+
         <div>
-            <div>
+            <div id="cooking_time_container" class="icon_inline">
                 <i class="small material-icons">access_time</i>
                 <div>
-                    <div>
-                        Preparation Time: {{recipe.prep_time}}
+                    <div class="icon_font_size">
+                        Preparation Time: 12
                     </div>
-                    <div>
-                        Cooking Time: {{recipe.cooking_time}}
+
+                    <div class="icon_font_size">
+                        Cooking Time: 12
                     </div>
                 </div>
-
-
             </div>
-            <div>
-                <i class="small material-icons">free_breakfast</i>Difficulty: {{recipe.difficulty}}
-                <i class="small material-icons">local_dining</i>Serves: {{recipe.serves}}
+
+            <div id="difficulty_and_serves">
+                <div class="icon_inline">
+                    <i class="small material-icons">free_breakfast</i>
+                    <div>Difficulty: Easy</div>
+                </div>
+
+                <div class="icon_inline">
+                    <i class="small material-icons">local_dining</i>
+                    <div>Serves: 2</div>
+                </div>
+                <div></div>
             </div>
+
         </div>
     </div>
 </section>

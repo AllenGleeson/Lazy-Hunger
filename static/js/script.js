@@ -9,8 +9,8 @@ $(document).ready(function () {
 
 /* Form validation */
 /* Prevents the form from being submitted then checks if there has been any ingredients or cooking methods AudioDestinationNode. If not then it will display an error. */
-$(".recipe-form").submit(function( e ) {
-  
+$(".recipe-form").submit(function (e) {
+
   if(!$(".ingredients-list").children().length){
     $(".ingredients span").text("No ingedients added");
     e.preventDefault();

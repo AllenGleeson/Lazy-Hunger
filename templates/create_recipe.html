@@ -22,64 +22,72 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Column for recipe details -->
-        <div class="col s12 m8 l8">
+        <div class="col s12 m8 l8 margin-top">
             <!-- Inputs for the recipe name and description -->
             <div class="input-field">
                 <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
                 <label for="recipe_name" class="active">Recipe Name</label>
             </div>
+
             <div class="input-field">
                 <textarea id="description" name="description" class="materialize-textarea recipe_description"
                     required></textarea>
                 <label for="description" class="active">Description</label>
             </div>
 
-            <!-- Column for the preperation and cooking time, set with a type of number -->
-            <div class="col s12 m6 l6">
-                <i class="small material-icons">access_time</i>
+            <!-- Preperation and cooking time, set with a type of number -->
+            <div>
+                <div class="icon_inline">
+                    <i class="small material-icons margin-top">access_time</i>
 
 
-                <div class="input-field">
-                    <input id="prep_time" name="prep_time" class="validate" type="number" min="1" max="60" required>
-                    <label for="prep_time" class="active">Preparation Time</label>
+                    <div id="prep-time" class="input-field base_margin">
+                        <input id="prep_time" name="prep_time" class="validate" type="number" min="1" max="60" required>
+                        <label for="prep_time" class="active">Preparation Time</label>
+                    </div>
+                    <div class="input-field base_margin">
+                        <input id="cooking_time" name="cooking_time" class="validate" type="number" min="1" max="60" required>
+                        <label for="cooking_time" class="active">Cooking Time</label>
+                    </div>
                 </div>
-                <div class="input-field">
-                    <input id="cooking_time" name="cooking_time" class="validate" type="number" min="1" max="60"
-                        required>
-                    <label for="cooking_time" class="active">Cooking Time</label>
+            </div>
+            <!-- Difficulty and serving inputs. Both displayed in select elements -->
+            <div>
+                <div class="icon_inline">
+                    <i class="small material-icons margin-top">free_breakfast</i>
+                    <div class="input-field max-width">
+                        <label for="difficulty" class="active">Difficulty</label>
+
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="" selected>Choose your option</option>
+                            <option value="Easy">Difficulty: Easy</option>
+                            <option value="Average">Difficulty: Average</option>
+                            <option value="Hard">Difficulty: Hard</option>
+                        </select>
+
+                    </div>
+                    <i class="small material-icons margin-top">local_dining</i>
+
+                    <div class="input-field max-width">
+
+                        <label for="serves" class="active">Serves</label>
+
+                        <select id="serves" name="serves" required>
+                            <option value="" selected>Choose your option</option>
+                            <option value="1">Serves: 1</option>
+                            <option value="2">Serves: 2</option>
+                            <option value="3">Serves: 3</option>
+                            <option value="4">Serves: 4</option>
+                            <option value="5">Serves: 5</option>
+                            <option value="6+">Serves: 6+</option>
+                        </select>
+
+                    </div>
                 </div>
             </div>
 
-            <!-- Column for the difficulty and how many the recipe will serve. Both displayed in select elements -->
-            <div class="col s12 m6 l6">
-                <i class="small material-icons">free_breakfast</i>
-
-                <div class="input-field">
-                    <select name="difficulty" required>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="Easy">Difficulty: Easy</option>
-                        <option value="Average">Difficulty: Average</option>
-                        <option value="Hard">Difficulty: Hard</option>
-                    </select>
-                </div>
-
-                <i class="small material-icons">local_dining</i>
-
-
-                <div class="input-field">
-                    <select name="serves" required>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Serves: 1</option>
-                        <option value="2">Serves: 2</option>
-                        <option value="3">Serves: 3</option>
-                        <option value="4">Serves: 4</option>
-                        <option value="5">Serves: 5</option>
-                        <option value="6">Serves: 6+</option>
-                    </select>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -92,7 +100,7 @@
             <span class=""></span>
             <input id="ingredient" type="text" class="validate">
             <button id="add_ingredient" class="btn btn-unique btn-color btn-rounded btn-sm my-0" type="button">
-                <div><i class="small material-icons">add</i></div>
+                <i class="small material-icons">add</i>
             </button>
         </div>
 
@@ -102,7 +110,7 @@
             <span class=""></span>
             <input id="method" type="text" class="validate">
             <button id="add_cooking_method" class="btn btn-unique btn-color btn-rounded btn-sm my-0" type="button">
-                <div><i class="small material-icons">add</i></div>
+                <i class="small material-icons">add</i>
             </button>
         </div>
 
@@ -110,7 +118,7 @@
 
     <!-- Creates the new Recipe -->
     <button class="btn btn-unique btn-color btn-rounded btn-sm my-0">
-        <div><i class="small material-icons">add_box</i>Create</div>
+        <i class="small material-icons">add_box</i>Create
     </button>
 
     <!-- Links back to the home page -->

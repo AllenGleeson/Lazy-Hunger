@@ -31,6 +31,20 @@ h1{
     font-size: 6px;
 }
 
+/* Some custom margins and max widths */
+
+.margin-top{
+    margin-top: 15px;
+}
+
+.base_margin{
+    margin: 15px;
+}
+
+.max-width{
+    max-width: 140px;
+}
+
 /* Nav */
 
 .brand-logo{
@@ -61,9 +75,9 @@ h1{
 /* Home Page */
 
 .masthead{
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg');
+    background-image: url('../../static/images/home_background_img.jpg');
     background-size: cover;
-    height: 340px;
+    height: 470px;
 }
 
 .jumbotron-about{
@@ -72,7 +86,7 @@ h1{
 }
 
 .subheading{
-    font-size: 20px;
+    font-size: 1.7rem;
 }
 
 .btn-color{
@@ -98,7 +112,7 @@ h1{
 }
 
 .card-image img{
-    width: 100%;
+    width: 100% !important;
     height: 100%;
 }
 
@@ -106,12 +120,8 @@ h1{
     margin: 2rem;
 }
 
-.card a{
-    top: 50%;
-}
-
-.card_buttons{
-    background-color: #a62d12;
+.card{
+    min-height: 210px;
 }
 
 .mainpageIcons i{
@@ -130,7 +140,7 @@ h1{
 .recipe_buttons{
     width: 100px;
     margin-right: 5px;
-    height: 65px;
+    margin: 10;
 }
 
 .recipe_buttons a{
@@ -158,6 +168,8 @@ h1{
 .recipe_content{
     background-color: blanchedalmond;
     border-radius: 15px;
+    min-height: 360px;
+    padding-top: 15px;
 }
 
 .recipeImage{
@@ -166,13 +178,9 @@ h1{
     margin-top: 10px;
 }
 
-#recipe_content{
-    background-color: blanchedalmond;
-    border-radius: 10px;
-}
-
 #recipe_title{
-    margin-top: 15px !important;
+    margin: 10px !important;
+    padding-top: 10px !important;
 }
 
 .recipe_description{
@@ -180,8 +188,37 @@ h1{
 }
 
 .recipe_description p{
-    font-size: 16px;
+    font-size: 2.0rem;
+    margin: 10px !important;
 }
+
+#cooking_time_container{
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+#cooking_time_container i{
+    margin-top: 15px;
+}
+
+.icon_font_size{
+    font-size: 1.2rem;
+}
+
+#difficulty_and_serves{
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.icon_inline{
+    display: inline-flex;
+}
+
+.icon_inline div{
+    margin-top: 3px;
+}
+
+
 
 /* Details Section */
 
@@ -225,16 +262,53 @@ h1{
     font-size: 16px;
 }
 
+/* Creating or Editing Recipes Pages */
+
+.input-field{
+    margin-left: 5px;
+}
+
+.input-field label{
+    min-width: 120px;
+}
+
+#prep-time{
+    margin-right: 70px !important;
+}
+
+.select-dropdown{
+    font-size: 12px !important;
+    width: 100%;
+}
+
+
+
 /* Media Queries */
+
+@media only screen and (max-width: 400px){
+    .brand-logo{
+        margin-left: 240px;
+        
+    }
+}
 
 @media only screen and (max-width: 600px){
     nav .brand-logo {
         left: 0% !important;
-        font-size: 2.2rem !important;
+        font-size: 2.0rem !important;
+        margin-left: 180px !important;
     }
-    
+
+    .masthead{
+        height: 350px;
+    }
+
+    .card-content{
+        padding: 5px !important;
+    }
+
     .mainpageIcons{
-        display: inline-flex;
+        display: inline-flex !important;
     }
 
     .mainpageIcons p{
@@ -266,8 +340,12 @@ h1{
     }
 }
 
-@media only screen and (max-width: 1600px){
+@media only screen and (max-width: 1600px) and (min-width: 601px){
     h1 {
         font-size: 3.2rem;
+    }
+
+    h2{
+        font-size: 2.56rem;
     }
 }

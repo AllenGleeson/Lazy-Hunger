@@ -23,8 +23,8 @@ def get_recipes():
     if not sort_key:
         sort_key = "recipe_name"
 
-    recipes = mongo.db.recipes.find().collation({ "locale": "en" }) if not search else mongo.db.recipes.find(
-        {"recipe_name": {"$regex": "(?i).*" + search + ".*"}}).collation({ "locale": "en" })
+    recipes = mongo.db.recipes.find().collation({"locale": "en"}) if not search else mongo.db.recipes.find(
+        {"recipe_name": {"$regex": "(?i).*" + search + ".*"}}).collation({"locale": "en"})
 
     if sort_key == "difficulty" or sort_key == "recipe_name" or sort_key == "serves" or sort_key == "total_time":
         recipes = recipes.sort(sort_key, pymongo.ASCENDING)
@@ -37,13 +37,14 @@ def get_recipes():
 def add_recipe():
     return render_template('create_recipe.html')
 
+
 @catch_me
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
     image = request.files['image']
     path = ""
-    
+
     if image and allowed_file(image.filename):
         path = "static/images/" + get_random_string() + image.filename
         image.save(path)
@@ -68,12 +69,14 @@ def insert_recipe():
     )
     return redirect(url_for('get_recipes'))
 
+
 @catch_me
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('view_recipe.html', recipe=recipe)
+
 
 @catch_me
 @app.route('/edit_recipe/<recipe_id>')
@@ -98,10 +101,11 @@ def update_recipe(recipe_id):
         path = "static/images/" + get_random_string() + image.filename
         image.save(path)
 
-        current_image = recipes.find_one({'_id': ObjectId(recipe_id)})
+        current_recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
+        current_image = current_recipe['recipe_image']
 
-        if current_image['recipe_image'] and os.path.exists("." + current_image['recipe_image']):
-            os.remove("." + current_image['recipe_image'])
+        if current_image and os.path.exists("." + current_image):
+            os.remove("." + current_image)
 
         recipes.update({'_id': ObjectId(recipe_id)},
                     {
@@ -135,13 +139,15 @@ def update_recipe(recipe_id):
 
     return redirect(url_for('get_recipes'))
 
+
 @catch_me
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     recipes = mongo.db.recipes
-    current_image = recipes.find_one({'_id': ObjectId(recipe_id)})
+    current_recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
+    current_image = current_recipe['recipe_image']
 
-    if current_image['recipe_image'] and os.path.exists("." + current_image['recipe_image']):
+    if current_image and os.path.exists("." + current_image):
         os.remove("." + current_image['recipe_image'])
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     else:

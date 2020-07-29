@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="col s12 m8 l8">
+        <div class="col s12 m8 l8 margin-top">
 
             <div class="input-field">
                 <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}"
@@ -32,49 +32,54 @@
             </div>
 
             <div>
-                <i class="small material-icons">access_time</i>
-
-
-                <div class="input-field col s12">
-                    <input id="prep_time" name="prep_time" class="validate" value="{{recipe.prep_time}}" type="number"
-                        min="1" max="60" required>
-                    <label for="prep_time" class="active">Preparation Time</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="cooking_time" name="cooking_time" class="validate" value="{{recipe.cooking_time}}"
-                        type="number" min="1" max="60" required>
-                    <label for="cooking_time" class="active">Cooking Time</label>
+                <div class="icon_inline">
+                    <i class="small material-icons margin-top">access_time</i>
+    
+    
+                    <div id="prep-time" class="input-field base_margin">
+                        <input id="prep_time" name="prep_time" class="validate" value="{{recipe.prep_time}}" type="number"
+                            min="1" max="60" required>
+                        <label for="prep_time" class="active">Preparation Time</label>
+                    </div>
+                    <div class="input-field base_margin">
+                        <input id="cooking_time" name="cooking_time" class="validate" value="{{recipe.cooking_time}}"
+                            type="number" min="1" max="60" required>
+                        <label for="cooking_time" class="active">Cooking Time</label>
+                    </div>
                 </div>
             </div>
+            
             <div>
-                <i class="small material-icons">free_breakfast</i>
-                <div class="input-field col s12">
-                    <label for="difficulty" class="active">Difficulty</label>
-
-                    <select name="difficulty" required>
-                        <option value="{{recipe.difficulty}}" selected>{{recipe.difficulty}}</option>
-                        <option value="Easy">Difficulty: Easy</option>
-                        <option value="Average">Difficulty: Average</option>
-                        <option value="Hard">Difficulty: Hard</option>
-                    </select>
-
-                </div>
-                <i class="small material-icons">local_dining</i>
-
-                <div class="input-field">
-
-                    <label for="serves" class="active">Serves</label>
-
-                    <select name="serves" required>
-                        <option value="{{recipe.serves}}" selected>Serves: {{recipe.serves}}</option>
-                        <option value="1">Serves: 1</option>
-                        <option value="2">Serves: 2</option>
-                        <option value="3">Serves: 3</option>
-                        <option value="4">Serves: 4</option>
-                        <option value="5">Serves: 5</option>
-                        <option value="6+">Serves: 6+</option>
-                    </select>
-
+                <div class="icon_inline">
+                    <i class="small material-icons margin-top">free_breakfast</i>
+                    <div class="input-field max-width">
+                        <label for="difficulty" class="active">Difficulty</label>
+    
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="{{recipe.difficulty}}" selected>{{recipe.difficulty}}</option>
+                            <option value="Easy">Difficulty: Easy</option>
+                            <option value="Average">Difficulty: Average</option>
+                            <option value="Hard">Difficulty: Hard</option>
+                        </select>
+    
+                    </div>
+                    <i class="small material-icons margin-top">local_dining</i>
+    
+                    <div class="input-field max-width">
+    
+                        <label for="serves" class="active">Serves</label>
+    
+                        <select id="serves" name="serves" required>
+                            <option value="{{recipe.serves}}" selected>Serves: {{recipe.serves}}</option>
+                            <option value="1">Serves: 1</option>
+                            <option value="2">Serves: 2</option>
+                            <option value="3">Serves: 3</option>
+                            <option value="4">Serves: 4</option>
+                            <option value="5">Serves: 5</option>
+                            <option value="6+">Serves: 6+</option>
+                        </select>
+    
+                    </div>
                 </div>
             </div>
 
@@ -86,12 +91,11 @@
             <h4>List of Ingrediants</h4>
             <ul class="ingredients-list">
                 {% for ingredient in recipe.ingredients %}
-                <li class="d-inline">
+                <li>
                     <p>{{ingredient}}</p>
-                    <input type="hidden" name="ingredients" value="{{ingredient}}" type="number" min="1" max="60"
-                        required>
+                    <input type="hidden" name="ingredients" value="{{ingredient}}">
                     <button type="button" class="btn btn-unique btn-color btn-rounded btn-sm">
-                        <div><i class="small material-icons">delete</i></div>
+                        <i class="small material-icons">delete</i>
                     </button>
                 </li>
 
@@ -100,7 +104,7 @@
             <span></span>
             <input id="ingredient" type="text" class="validate">
             <button id="add_ingredient" class="btn btn-unique btn-color btn-rounded btn-sm" type="button">
-                <div><i class="small material-icons">add</i></div>
+                <i class="small material-icons">add</i>
             </button>
         </div>
 
@@ -108,11 +112,11 @@
             <h4>Cooking Methods</h4>
             <ul class="cooking-methods-list">
                 {% for method in recipe.methods %}
-                <li class="d-inline">
+                <li>
                     <p>{{method}}</p>
                     <input type="hidden" name="methods" value="{{method}}">
                     <button type="button" class="btn btn-unique btn-color btn-rounded btn-sm">
-                        <div><i class="small material-icons">delete</i></div>
+                        <i class="small material-icons">delete</i>
                     </button>
                 </li>
                 {% endfor %}
@@ -120,7 +124,7 @@
             <span></span>
             <input id="method" type="text" class="validate">
             <button id="add_cooking_method" class="btn btn-unique btn-color btn-rounded btn-sm" type="button">
-                <div><i class="small material-icons">add</i></div>
+                <i class="small material-icons">add</i>
             </button>
         </div>
 
