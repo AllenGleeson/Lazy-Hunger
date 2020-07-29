@@ -1,12 +1,19 @@
 
 
+mobile_width = 400
+
 /* On Document Ready */
 /* Inistialises the sidenav and select options */
 $(document).ready(function () {
   $('.sidenav').sidenav();
   $('select').formSelect();
 
-  
+  w_w = $(window).width();
+    if (w_w < mobile_width) {
+      $(".recipe_buttons").addClass('icon_inline');
+      $(".icon_group").addClass('d-grid');
+      $(".card").removeClass('horizontal');
+    }
 });
 
 mobile_width = 400
