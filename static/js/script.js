@@ -22,7 +22,7 @@ mobile_width = 400
   // Changes home page cards to be vertical rather than horizontal
   $(window).resize(function () {
     w_w = $(window).width();
-    if (w_w < mobile_width) {
+    if (w_w <= mobile_width) {
       $(".recipe_buttons").addClass('icon_inline');
       $(".icon_group").addClass('d-grid');
       $(".card").removeClass('horizontal');

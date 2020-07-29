@@ -148,7 +148,7 @@ def delete_recipe(recipe_id):
     current_image = current_recipe['recipe_image']
 
     if current_image and os.path.exists("." + current_image):
-        os.remove("." + current_image['recipe_image'])
+        os.remove("." + current_image)
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     else:
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})

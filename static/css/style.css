@@ -288,7 +288,7 @@ h1{
 
 /* Media Queries */
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 401px){
     .brand-logo{
         margin-left: 240px;
     }
