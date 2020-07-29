@@ -144,7 +144,6 @@ h1{
 }
 
 .recipe_buttons a{
-    margin-right: 5px;
     height: 80px;
     letter-spacing: 1.5px !important;
 }
@@ -288,8 +287,24 @@ h1{
 @media only screen and (max-width: 400px){
     .brand-logo{
         margin-left: 240px;
-        
     }
+
+    .mainpageIcons p{
+        font-size: 12px !important;
+    }
+
+    .recipe_buttons i{
+        font-size: 1.3rem !important;
+    }
+
+    .recipe_buttons a{
+        margin-left: 15px;
+        height: 40px;
+        padding: 0;
+        width: 74px;
+        font-size: 10px;
+    }
+    
 }
 
 @media only screen and (max-width: 600px){
