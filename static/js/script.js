@@ -5,18 +5,38 @@
 $(document).ready(function () {
   $('.sidenav').sidenav();
   $('select').formSelect();
+
+  
 });
+
+mobile_width = 400
+
+  //onResize
+  // Changes home page cards to be vertical rather than horizontal
+  $(window).resize(function () {
+    w_w = $(window).width();
+    if (w_w < mobile_width) {
+      $(".recipe_buttons").addClass('icon_inline');
+      $(".icon_group").addClass('d-grid');
+      $(".card").removeClass('horizontal');
+    }
+    else{
+      $(".card").addClass('horizontal');
+      $("#icon_group").removeClass('d-grid');
+      $(".recipe_buttons").removeClass('icon_inline');
+    }
+  });
 
 /* Form validation */
 /* Prevents the form from being submitted then checks if there has been any ingredients or cooking methods AudioDestinationNode. If not then it will display an error. */
 $(".recipe-form").submit(function (e) {
 
-  if(!$(".ingredients-list").children().length){
+  if (!$(".ingredients-list").children().length) {
     $(".ingredients span").text("No ingedients added");
     e.preventDefault();
   }
 
-  if(!$(".cooking-methods-list").children().length){
+  if (!$(".cooking-methods-list").children().length) {
     $(".cooking_methods span").text("No ingedients added");
     e.preventDefault();
   }
@@ -26,7 +46,7 @@ $(".recipe-form").submit(function (e) {
 /* Prevents any empty ingredients or cooking methods from being created */
 /* If the input is not empty then it will create the new ingredient or cooking method using add_item()*/
 $("#add_ingredient").click(function () {
-  if(!$("#ingredient").val()){
+  if (!$("#ingredient").val()) {
     $(".ingredients span").text("Ingredient must have a name");
     return;
   }
@@ -35,7 +55,7 @@ $("#add_ingredient").click(function () {
 });
 
 $("#add_cooking_method").click(function () {
-  if(!$("#method").val()){
+  if (!$("#method").val()) {
     $(".cooking_methods span").text("Cooking method must have a name");
     return;
   }

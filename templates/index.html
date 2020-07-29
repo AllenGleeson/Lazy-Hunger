@@ -49,22 +49,22 @@
                     <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">
                         <h2 class="header">{{recipe.recipe_name}}</h2>
                     </a>
+                    <div class="icon_group">
+                        <div class="mainpageIcons">
+                            <i class="small material-icons">access_time</i>
+                            <p>Time:{{recipe.total_time}}<span>mins</span></p>
+                        </div>
 
-                    <div class="mainpageIcons">
-                        <i class="small material-icons">access_time</i>
-                        <p>Time:{{recipe.total_time}}<span>mins</span></p>
+                        <div class="mainpageIcons">
+                            <i class="small material-icons">free_breakfast</i>
+                            <p>Difficulty:{{recipe.difficulty}}</p>
+                        </div>
+
+                        <div class="mainpageIcons">
+                            <i class="small material-icons">local_dining</i>
+                            <p>Serves:{{recipe.serves}}</p>
+                        </div>
                     </div>
-
-                    <div class="mainpageIcons">
-                        <i class="small material-icons">free_breakfast</i>
-                        <p>Difficulty:{{recipe.difficulty}}</p>
-                    </div>
-
-                    <div class="mainpageIcons">
-                        <i class="small material-icons">local_dining</i>
-                        <p>Serves:{{recipe.serves}}</p>
-                    </div>
-
                 </div>
             </div>
             <div class="recipe_buttons">

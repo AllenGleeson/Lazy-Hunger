@@ -45,6 +45,10 @@ h1{
     max-width: 140px;
 }
 
+.d-grid{
+    display: grid;
+}
+
 /* Nav */
 
 .brand-logo{
@@ -298,13 +302,30 @@ h1{
     }
 
     .recipe_buttons a{
-        margin-left: 15px;
+        margin-left: 82px;
+        margin-bottom: 10px;
         height: 40px;
-        padding: 0;
-        width: 74px;
+        width: 103px;
+        padding: 5px !important;
         font-size: 10px;
+        display: inline-flex !important;
+    }
+
+    #delete_recipe{
+        margin-top: 0px;
     }
     
+    #edit_recipe{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 10px;
+    }
+
+
+    .card-image{
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @media only screen and (max-width: 600px){
@@ -324,6 +345,8 @@ h1{
 
     .mainpageIcons{
         display: inline-flex !important;
+        display: grid;
+
     }
 
     .mainpageIcons p{
