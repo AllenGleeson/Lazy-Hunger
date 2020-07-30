@@ -1,5 +1,3 @@
-run flask with: python -m flask run
-
 # Lazy Hunger
 
 Lazy hunger is a community based cooking recipe website for people to look up some recipes, create their own and to change or delete recipes on the site.
