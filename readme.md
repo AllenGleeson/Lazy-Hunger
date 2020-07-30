@@ -145,7 +145,7 @@ I largely used the browsers DevTools and Visual Studio Codes debug mode to creat
 The project was tested in different screen sizes and will be mobile friendly with help from Materialise.
 
 Below I have some manual testing done through the site:
-
+https://github.com/AllenGleeson/Lazy-Hunger/tree/master/Testing
 
 ## Deployment
 
