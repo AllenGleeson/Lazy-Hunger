@@ -148,7 +148,7 @@ https://github.com/AllenGleeson/Lazy-Hunger/tree/master/Testing
 ## Deployment
 
 I added all my code and images to github and then deployed my project through Heroku.
-Going ot Heroku and creating a new Heroku App with the projects name. Then connecting the app to the code on github and doing a
+Going to Heroku and creating a new Heroku App with the projects name. Then connecting the app to the code on github and doing a
 manual deploy, ensuring to have the Procile and requirements.txt required to run the project on Heroku.
 https://devcenter.heroku.com/articles/github-integration
 
