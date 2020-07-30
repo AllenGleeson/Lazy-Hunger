@@ -23,13 +23,16 @@ def get_recipes():
     if not sort_key:
         sort_key = "recipe_name"
 
+    recipe_count = mongo.db.recipes.find().count()
+
     recipes = mongo.db.recipes.find().collation({"locale": "en"}) if not search else mongo.db.recipes.find(
         {"recipe_name": {"$regex": "(?i).*" + search + ".*"}}).collation({"locale": "en"})
 
     if sort_key == "difficulty" or sort_key == "recipe_name" or sort_key == "serves" or sort_key == "total_time":
         recipes = recipes.sort(sort_key, pymongo.ASCENDING)
 
-    return render_template("index.html", recipes=recipes)
+    print(recipes)
+    return render_template("index.html", recipes=recipes, recipe_count=recipe_count)
 
 
 @catch_me
