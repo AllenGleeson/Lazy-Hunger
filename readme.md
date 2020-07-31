@@ -138,6 +138,9 @@ https://materializecss.com/text-inputs.html
 This project used Materialise, HTML5 & CSS3, JS, Jquery, Python3, Flask and MongoDB.
 Github is used for version control and the website is hosted on Heroku.
 
+### My database:
+https://user-images.githubusercontent.com/3257875/89083268-657e2400-d388-11ea-806e-3436bf34a718.png
+
 ## Testing
 
 I largely used the browsers DevTools and Visual Studio Codes debug mode to create breakpoints to view what I was changing and to test.
