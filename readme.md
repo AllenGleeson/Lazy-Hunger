@@ -102,7 +102,8 @@ The goal of the website is for users to be able to view recipes they could try,e
     
 ### Skeleton
 
-I created some wireframes for the website which are in this repository.
+I created some wireframes for the website which are in this repository:
+https://github.com/AllenGleeson/Lazy-Hunger/tree/master/wireframes
 
 ### Surface
 
