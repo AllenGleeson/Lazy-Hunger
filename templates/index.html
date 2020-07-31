@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block jumbotron %}
+<!-- A heading for the website -->
 <header class="masthead">
     <div class="jumbotron center-align">
         <div class="container jumbotron-about">
@@ -16,7 +17,7 @@
 
 {% block content %}
 
-
+<!-- Search and sort options -->
 <div class="row">
     <div class="col s12 col-md-10 mx-auto">
         <form class="form-inline mr-auto" method="GET">
@@ -37,12 +38,14 @@
 
 
     <div class="col s12">
-
+        <!-- Checks if there are any recipes -->
         {% if recipe_count > 0 %}
+            <!-- Creates a card for each recipe in the database -->
+            <!-- Displays the image, name, time, difficulty and how many it serves -->
             {% for recipe in recipes %}
             <div class="card horizontal">
                 <div class="card-image">
-                    <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
+                    <img src="..{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
                         onerror="this.src='../static/images/placeholder.jpg'">
                 </div>
                 <div class="card-stacked">
@@ -82,6 +85,7 @@
             {% endfor %}
 
         {% else %}
+        <!-- If there are no recipes then it will display this message -->
             <h2>There are no recipes currently. Be the first to add one. People are hungry.</h2>
         {% endif %}
     </div>

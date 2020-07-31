@@ -1,41 +1,44 @@
 {% extends 'base.html' %} {% block content %}
 
-
+<!-- Displays the selected recipe to the user -->
 <section class="row recipe_content">
+    <!-- Recipe Image -->
     <div class="col s12 m4 l4">
-        <img id="recipeImage" class="recipeImage" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
+        <img id="recipeImage" class="recipeImage" src="..{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
             onerror="this.src='/static/images/placeholder.jpg'">
     </div>
 
     <div class="col s12 m8 l8">
+        <!-- Recipe name and description -->
         <h1 id="recipe_title">{{recipe.recipe_name}}</h1>
         <div class="recipe_description">
             <p>{{recipe.recipe_description}}</p>
         </div>
 
         <div>
+            <!-- Recipe preparation and cooking time -->
             <div id="cooking_time_container" class="icon_inline">
                 <i class="small material-icons">access_time</i>
                 <div>
                     <div class="icon_font_size">
-                        Preparation Time: 12
+                        Preparation Time: {{recipe.prep_time}}
                     </div>
 
                     <div class="icon_font_size">
-                        Cooking Time: 12
+                        Cooking Time: {{recipe.cooking_time}}
                     </div>
                 </div>
             </div>
-
+            <!-- Recipe difficulty and how many it serves -->
             <div id="difficulty_and_serves">
                 <div class="icon_inline">
                     <i class="small material-icons">free_breakfast</i>
-                    <div>Difficulty: Easy</div>
+                    <div>Difficulty: {{recipe.difficulty}}</div>
                 </div>
 
                 <div class="icon_inline">
                     <i class="small material-icons">local_dining</i>
-                    <div>Serves: 2</div>
+                    <div>Serves: {{recipe.serves}}</div>
                 </div>
                 <div></div>
             </div>
@@ -69,9 +72,11 @@
     </div>
 </div>
 
+<!-- Brings the user to the Edit Recipe Page for this recipe -->
 <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="btn btn-unique btn-color btn-rounded btn-sm my-0">
     <i class="large material-icons">edit</i>Edit
 </a>
+<!-- Deletes this recipe from the database and returns to the Home Page -->
 <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="btn btn-unique btn-color btn-rounded btn-sm my-0">
     <i class="large material-icons">delete_forever</i>Delete
 </a>

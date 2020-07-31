@@ -16,6 +16,7 @@
 
 <body>
     <!-- Navigation -->
+    <!-- Links to Home Page and to Create A Recipe Page -->
     <nav class="nav-extended">
         <div class="nav-wrapper">
             <a href="{{url_for('get_recipes')}}" class="brand-logo">Lazy Hunger</a>
@@ -26,11 +27,13 @@
             </ul>
         </div>
     </nav>
+    <!-- Side Navigation -->
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('get_recipes')}}">Home</a></li>
         <li><a href="{{url_for('add_recipe')}}">Create A Recipe</a></li>
     </ul>
 
+    <!-- A place for the jumbotron on the Home Page -->
     {% block jumbotron %}{% endblock %}
 
     <!-- Main Content -->
@@ -45,14 +48,14 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
+                <div>
                     <p class="copyright text-muted">Lazy Hunger 2020</p>
                 </div>
             </div>
         </div>
     </footer>
 
-
+    <!-- Js and Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

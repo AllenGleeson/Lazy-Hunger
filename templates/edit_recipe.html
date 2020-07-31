@@ -1,10 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 
-
+<!-- A form to edit the recipe - Prefilled with the recipes details -->
 <form class="recipe-form" action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" enctype="multipart/form-data">
     <div class="row recipe_content">
         <div class="form-group col s12 m4 l4">
-            <img id="recipe_image" class="recipeImage" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
+            <!-- Recipe Image - if there is no image then it will display a placeholder image -->
+            <img id="recipe_image" class="recipeImage" src="..{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
                 onerror="this.src='/static/images/placeholder.jpg'">
             <div class="file-field input-field">
                 <div class="btn btn-unique btn-color btn-rounded btn-sm">
@@ -24,7 +25,7 @@
                     required>
                 <label for="recipe_name" class="active">Recipe Name</label>
             </div>
-
+            <!-- Description is a text area as it could be longer than a title -->
             <div class="input-field">
                 <textarea id="description" name="description" class="materialize-textarea recipe_description"
                     required>{{recipe.recipe_description}}</textarea>
@@ -33,9 +34,9 @@
 
             <div>
                 <div class="icon_inline">
+                    <!-- Cooking a preparation time inputs with a type of number -->
                     <i class="small material-icons margin-top">access_time</i>
-    
-    
+                    
                     <div id="prep-time" class="input-field base_margin">
                         <input id="prep_time" name="prep_time" class="validate" value="{{recipe.prep_time}}" type="number"
                             min="1" max="60" required>
@@ -50,6 +51,7 @@
             </div>
             
             <div>
+                <!-- Difficulty and servings both in select elements -->
                 <div class="icon_inline">
                     <i class="small material-icons margin-top">free_breakfast</i>
                     <div class="input-field max-width">
@@ -87,6 +89,8 @@
     </div>
 
     <div class="row">
+        <!-- For each ingredient and cooking method in the recipe it will create a new list item -->
+        <!-- List items will contain a hidden input to be sent to the server -->
         <div class=" col s12 m6 l6 ingredients">
             <h4>List of Ingrediants</h4>
             <ul class="ingredients-list">
@@ -94,6 +98,7 @@
                 <li>
                     <p>{{ingredient}}</p>
                     <input type="hidden" name="ingredients" value="{{ingredient}}">
+                    <!-- Button to delete this ingredients list item -->
                     <button type="button" class="deleteListItem btn btn-unique btn-color btn-rounded btn-sm">
                         <i class="small material-icons">delete</i>
                     </button>
@@ -101,7 +106,9 @@
 
                 {% endfor %}
             </ul>
+            <!-- This span will show an error if the user tries to add an empty ingredient -->
             <span></span>
+            <!-- Creates a new ingredient - including the hidden input -->
             <input id="ingredient" type="text" class="validate">
             <button id="add_ingredient" class="btn btn-unique btn-color btn-rounded btn-sm" type="button">
                 <i class="small material-icons">add</i>
@@ -115,13 +122,16 @@
                 <li>
                     <p>{{method}}</p>
                     <input type="hidden" name="methods" value="{{method}}">
+                    <!-- Button to delete this cooking methods list item -->
                     <button type="button" class="deleteListItem btn btn-unique btn-color btn-rounded btn-sm">
                         <i class="small material-icons">delete</i>
                     </button>
                 </li>
                 {% endfor %}
             </ul>
+            <!-- This span will show an error if the user tries to add an empty cooking method -->
             <span></span>
+            <!-- Creates a new cooking method - including the hidden input -->
             <input id="method" type="text" class="validate">
             <button id="add_cooking_method" class="btn btn-unique btn-color btn-rounded btn-sm" type="button">
                 <i class="small material-icons">add</i>
@@ -130,10 +140,11 @@
 
     </div>
 
+    <!-- Updates the recipe in the database and returns to the Home Page -->
     <button class="btn btn-unique btn-color btn-rounded btn-sm">
         <div><i class="small material-icons">add_box</i>Update</div>
     </button>
-
+    <!-- Cancel will return to the Home Page -->
     <a href="{{url_for('get_recipes')}}" class="btn btn-unique btn-color btn-rounded btn-sm">
         <i class="large material-icons">cancel</i>Cancel
     </a>
