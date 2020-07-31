@@ -11,7 +11,7 @@ from utils import get_random_string, allowed_file
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'lazy-hunger'
 app.config["MONGO_URI"] = os.getenv('DBConnectionString')
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = os.getenv('secret_key')
 mongo = PyMongo(app)
 
 
