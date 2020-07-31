@@ -1,5 +1,3 @@
-run flask with: python -m flask run
-
 # Lazy Hunger
 
 Lazy hunger is a community based cooking recipe website for people to look up some recipes, create their own and to change or delete recipes on the site.
@@ -104,7 +102,8 @@ The goal of the website is for users to be able to view recipes they could try,e
     
 ### Skeleton
 
-I created some wireframes for the website which are in this repository.
+I created some wireframes for the website which are in this repository:
+https://github.com/AllenGleeson/Lazy-Hunger/tree/master/wireframes
 
 ### Surface
 
@@ -145,12 +144,12 @@ I largely used the browsers DevTools and Visual Studio Codes debug mode to creat
 The project was tested in different screen sizes and will be mobile friendly with help from Materialise.
 
 Below I have some manual testing done through the site:
-
+https://github.com/AllenGleeson/Lazy-Hunger/tree/master/Testing
 
 ## Deployment
 
 I added all my code and images to github and then deployed my project through Heroku.
-Going ot Heroku and creating a new Heroku App with the projects name. Then connecting the app to the code on github and doing a
+Going to Heroku and creating a new Heroku App with the projects name. Then connecting the app to the code on github and doing a
 manual deploy, ensuring to have the Procile and requirements.txt required to run the project on Heroku.
 https://devcenter.heroku.com/articles/github-integration
 
