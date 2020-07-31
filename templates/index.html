@@ -45,7 +45,7 @@
             {% for recipe in recipes %}
             <div class="card horizontal">
                 <div class="card-image">
-                    <img src="..{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
+                    <img src="/{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"
                         onerror="this.src='../static/images/placeholder.jpg'">
                 </div>
                 <div class="card-stacked">

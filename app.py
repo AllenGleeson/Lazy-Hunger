@@ -24,7 +24,9 @@ def handle_bad_request(e):
         flash("An error with the database occurred, couldn't find recipe", e)
     if type(e) is pymongo.errors.CursorNotFound:
         flash("An error with the database occurred, couldn't find recipe", e)
-    
+    flash(e)
+    flash(type(e))
+    print(type(e))
     return render_template("/error.html")
 
 
@@ -93,7 +95,7 @@ def insert_recipe():
             'total_time': total_time,
             'difficulty': request.form.get('difficulty'),
             'serves': request.form.get('serves'),
-            'recipe_image': f"/{path}" if path else None,
+            'recipe_image': f"{path}" if path else None,
             'ingredients': request.form.getlist('ingredients'),
             'methods': request.form.getlist('methods')
         }
@@ -128,6 +130,9 @@ def update_recipe(recipe_id):
     cooking_time = int(request.form.get('cooking_time'))
     total_time = prep_time + cooking_time
 
+    """ Gets the current image path """
+    current_recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
+    current_image = current_recipe['recipe_image']
 
     """ Checks if there is an image and if that image is of the allowed filetype """
     if image and allowed_file(image.filename):
@@ -135,13 +140,10 @@ def update_recipe(recipe_id):
         path = "static/images/" + get_random_string() + image.filename
         image.save(path)
 
-        """ Gets the current image path """
-        current_recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
-        current_image = current_recipe['recipe_image']
 
         """ Checks if that image path exists on the server - If it does then it deletes it """
         if current_image and os.path.exists("." + current_image):
-            os.remove("." + current_image)
+            os.remove("./" + current_image)
 
         """ Updates the recipe """
         recipes.update({'_id': ObjectId(recipe_id)},
@@ -153,12 +155,14 @@ def update_recipe(recipe_id):
                         'total_time': total_time,
                         'difficulty': request.form.get('difficulty'),
                         'serves': request.form.get('serves'),
-                        'recipe_image': "/" + path,
+                        'recipe_image': path,
                         'ingredients': request.form.getlist('ingredients'),
                         'methods': request.form.getlist('methods')
                     }
                     )
     else:
+
+        path = current_image
         """ Updates the recipe """
         recipes.update({'_id': ObjectId(recipe_id)},
                     {
@@ -169,7 +173,7 @@ def update_recipe(recipe_id):
                         'total_time': total_time,
                         'difficulty': request.form.get('difficulty'),
                         'serves': request.form.get('serves'),
-                        'recipe_image': "/" + path,
+                        'recipe_image': path,
                         'ingredients': request.form.getlist('ingredients'),
                         'methods': request.form.getlist('methods')
                     }
@@ -190,7 +194,7 @@ def delete_recipe(recipe_id):
     """ Checks if that image path exists on the server - If it does then it deletes it and the recipe """
     """ If the image doesnt exist then it will just delete the recipe """
     if current_image and os.path.exists("." + current_image):
-        os.remove("." + current_image)
+        os.remove("./" + current_image)
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     else:
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
