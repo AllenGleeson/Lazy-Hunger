@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
-from utils import catch_me, get_random_string, allowed_file
+from utils import get_random_string, allowed_file
 
 """ Creates the flask app """
 app = Flask(__name__)
