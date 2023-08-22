@@ -52,7 +52,6 @@ def get_recipes():
 
     """ Gets the recipes count to determine if there are any entries in the database """
     recipe_count = mongo.db.recipes.count()
-    print("Recipe count+++++++++++++++",recipe_count)
     """ If search is empty then it will return all entries in the database
     But if there is a search then it will return entries where the recipe name contains that search """
     recipes = mongo.db.recipes.find().collation({"locale": "en"}) if not search else mongo.db.recipes.find(
