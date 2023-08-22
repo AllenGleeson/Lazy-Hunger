@@ -2,6 +2,7 @@
 
 body{
     font-family: 'Alegreya', serif;
+    background-color: white !important;
 }
 
 .bodycontainer{
@@ -340,12 +341,12 @@ h1{
 @media only screen and (max-width: 600px){
     nav .brand-logo {
         left: 0% !important;
-        font-size: 2.0rem !important;
+        font-size: 1.4rem !important;
         margin-left: 180px !important;
     }
 
-    .masthead{
-        height: 350px;
+    .sidenav{
+        width: auto !important;
     }
 
     .card-content{
@@ -375,15 +376,15 @@ h1{
     }
 
     h1 {
-        font-size: 2.8rem;
+        font-size: 2rem;
     }
 
     h2 {
-        font-size: 2.15rem;
+        font-size: 1.15rem;
     }
     
     .subheading {
-        font-size: 16px;
+        font-size: 20px;
     }
 }
 
