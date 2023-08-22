@@ -60,7 +60,7 @@ h1{
 
 .nav-extended{
     height: 80px !important;
-    background-color: #a62d12;
+    background: radial-gradient(#770101,#a62d12);
 }
 
 #nav-mobile{
@@ -72,7 +72,6 @@ h1{
 }
 
 #nav-mobile li a:hover{
-    font-size: 28px;
     text-decoration: underline;
 }
 
@@ -94,7 +93,12 @@ h1{
 }
 
 .btn-color{
-    background-color: #a62d12;
+    background: radial-gradient(#770101,#a62d12);
+    text-shadow: 0px -1px 4px #000;
+}
+
+.btn:hover{
+    background: radial-gradient(#00ffe7, #2bbbad) !important;
 }
 
 #search_Label{

@@ -1,14 +1,14 @@
-{% extends 'base.html' %} {% block content %} 
-<!-- Displays an error message to the user -->
-{% with messages = get_flashed_messages(with_categories=true) %}
-<h2>Sorry, it seems something has gone wrong</h2>
-  {% if messages %}
-    <ul class=flashes>
-    {% for category, message in messages %}
-      <li>{{ message }} : {{ category }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
+{% extends 'base.html' %}
+{% block content %}
+  <!-- Displays an error message to the user -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    <h2>Sorry, it seems something has gone wrong</h2>
+    {% if messages %}
+      <ul class=flashes>
+        {% for category, message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 {% endblock %}

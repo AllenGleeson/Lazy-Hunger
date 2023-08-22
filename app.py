@@ -1,53 +1,58 @@
 import os
 import bson
 import pymongo
+from pymongo import errors
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
 from utils import get_random_string, allowed_file
+from dotenv import load_dotenv
 
-""" Creates the flask app """
+load_dotenv()
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'lazy-hunger'
-app.config["MONGO_URI"] = os.getenv('DBConnectionString')
-app.secret_key = os.getenv('secret_key')
+app.config["MONGO_URI"] = os.environ.get("DBConnectionString")
+app.secret_key = os.environ.get("secret_key")
 mongo = PyMongo(app)
+
+@app.errorhandler(500)
+@app.errorhandler(InvalidId)
+@app.errorhandler(errors.ConnectionFailure)
+@app.errorhandler(errors.CursorNotFound)
+def handle_bad_request(e):
+    """ Error handling: will catch these errors and display the play messages to error.html """
+    if type(e) is InvalidId:
+        flash("We dont have this recipe anymore.")
+    if type(e) is errors.ConnectionFailure:
+        flash("Having troubles connecting right now. Please try again later.")
+    if type(e) is errors.CursorNotFound:
+        flash("Sorry a problem on our side.")
+    
+    return render_template("/error.html")
 
 
 @app.errorhandler(Exception)
-def handle_bad_request(e):
-    """ Error handling: will catch these errors and display the play messages to error.html """
-    if type(e) is bson.errors.InvalidId:
-        flash("An error with the database occurred, couldn't find recipe", e)
-    if type(e) is pymongo.errors.ConnectionFailure:
-        flash("An error with the database occurred, couldn't find recipe", e)
-    if type(e) is pymongo.errors.CursorNotFound:
-        flash("An error with the database occurred, couldn't find recipe", e)
-    flash(e)
-    flash(type(e))
-    print(type(e))
-    return render_template("/error.html")
+def handle_other_errors(e):
+    """ Default error handling for other exceptions """
+    flash("An unexpected error occurred.")
+    return render_template("error.html")
 
 
 @app.route('/')
 @app.route('/get_recipes/')
 def get_recipes():
     """ A View for the Home Page """
-
-    # raise Exception("test")
-
     """ Sets the search and sort """
     sort_key = request.args.get('sort')
     search = request.args.get('search')
-
+    
     """ If there is no sort key then the sort will be set to the name """
     if not sort_key:
         sort_key = "recipe_name"
 
     """ Gets the recipes count to determine if there are any entries in the database """
-    recipe_count = mongo.db.recipes.find().count()
-
+    recipe_count = mongo.db.recipes.count()
+    print("Recipe count+++++++++++++++",recipe_count)
     """ If search is empty then it will return all entries in the database
     But if there is a search then it will return entries where the recipe name contains that search """
     recipes = mongo.db.recipes.find().collation({"locale": "en"}) if not search else mongo.db.recipes.find(
@@ -201,6 +206,5 @@ def delete_recipe(recipe_id):
     return redirect(url_for('get_recipes'))
 
 """ Sets the apps host and port """
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT'), ))
+if __name__ == "__main__":
+    app.run(debug=False)
