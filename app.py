@@ -207,4 +207,4 @@ def delete_recipe(recipe_id):
 
 """ Sets the apps host and port """
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(host=os.getenv('HOST'), port = int(os.getenv('PORT')), debug=False)
