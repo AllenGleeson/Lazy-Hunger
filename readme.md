@@ -4,7 +4,7 @@ Lazy hunger is a community based cooking recipe website for people to look up so
 
 The aim was to use MongoDB to store recipes and allow users to add their own or update and delete. Also to use the Flask framework to display the recipes back to the user. I use Materialise Framework for the look of the website with some added JS and Jquery to add to the user experience.
 
-Here is a link to the published site on Heroku: https://lazy-hunger.herokuapp.com/
+Here is a link to the published site on Heroku: https://lazy-hunger-9742fb5be98d.herokuapp.com/
 
 ## UX
 
